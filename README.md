@@ -8,7 +8,7 @@ The raw data and R-scripts used to perform the analyses and figures are here.
 * 01-data_calculations_and_figures.R: R-script to reproduce the N deposition figures and calculations
 * 02-isotope_figures.R: R-script to reproduce the isotope figures
 * 03-cows_pigs_fertilizer_figure: R-script for the agriculture (cows, pigs, and fertilizer) figure
-* cows fertilizer pigs.csv:
+* cows fertilizer pigs.csv: agriculture (cows, pigs, and fertilizer) data
 * ELA N precip data for calculations.csv: raw precipitation chemistry and depths
 * lake stream survey.csv: dissolved organic matter, particulate organic matter, and zooplankton isotope data
 * precip amount conc delta.csv: precipitation data with concentrations and isotopes
