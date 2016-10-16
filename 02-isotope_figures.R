@@ -143,3 +143,4 @@ with(precip_isotopes, cor(d15NNH4, Precipitation/(EndDOY-StartDOY), use = "pairw
 with(precip_isotopes, cor(d15NNO3, Precipitation/(EndDOY-StartDOY), use = "pairwise.complete.obs"))
 with(precip_isotopes, cor(d18ONO3, Precipitation/(EndDOY-StartDOY), use = "pairwise.complete.obs"))
 
+# EOF

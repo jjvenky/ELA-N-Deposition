@@ -10,6 +10,7 @@ library('ggplot2')
 # Cows: thousands, Fertlizer: thousand tons, Pigs: millions
 cpf <- read.csv('cows fertilizer pigs.csv')
 ggplot(cpf, aes(x = year, y = value, colour = variable)) + 
+  geom_vline(xintercept = c(1970, 2013), colour = "black") +
   geom_line(size = 2) + 
   labs(x = "Year", y = "", colour = "") + 
   scale_y_log10() + 
@@ -20,3 +21,4 @@ ggplot(cpf, aes(x = year, y = value, colour = variable)) +
   theme(legend.position = "bottom", legend.key = element_rect(colour = "white"))
 ggsave(filename = "cows pigs fert.pdf", height = 5, width = 7, units = "in")
 
+# EOF
