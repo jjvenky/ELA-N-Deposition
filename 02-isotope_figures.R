@@ -27,7 +27,7 @@ deltaNH4 <- read.csv('precip delta NH4.csv')
 # use reorder to sort the Site based on median(d15NNH4)
 ggplot(deltaNH4, aes(x = reorder(Site, d15NNH4, median), y = d15NNH4)) + 
   geom_boxplot(outlier.size = NA) + 
-  geom_jitter(aes(colour = Site), width = 0.5) + 
+  geom_jitter(aes(colour = Site), width = 0.2) + 
   coord_flip() +  
   labs(x = "", y = expression("\u03b4"^15*"N-NH"[4]^+{}*" (\u2030)"), colour="") + 
   scale_color_brewer(palette="Dark2", labels="") + 
@@ -41,7 +41,7 @@ deltaNO3 <- read.csv('precip delta NO3.csv')
 # use reorder to sort the Site based on median(d15NNH4)
 ggplot(deltaNO3, aes(x = reorder(Site, d15NNO3, median), y = d15NNO3)) + 
   geom_boxplot(outlier.size = NA) + 
-  geom_jitter(aes(colour = Site), width = 0.5) + 
+  geom_jitter(aes(colour = Site), width = 0.2) + 
   coord_flip() +  
   labs(x = "", y = expression("\u03b4"^15*"N-NO"[3]^-{}*" (\u2030)"), colour="") + 
   scale_color_brewer(palette="Dark2", labels="") + 
@@ -54,8 +54,8 @@ ggsave(filename = "d15NNO3 precip boxplots.pdf", device = cairo_pdf, height = 5,
 lss <- read.csv('lake stream survey.csv')
 ggplot(lss, aes(x = Sample.Type, y = d15N)) + 
   geom_boxplot(outlier.size = NA) + 
-  geom_jitter(aes(colour = Sample.Type), width = 0.5) + 
-  facet_grid(Type ~ .) +
+  geom_jitter(aes(colour = Sample.Type), width = 0.2) + 
+  facet_grid(Type ~ ., space = "free", scales = "free") +
   coord_flip() +
   labs(x = "", y = expression("\u03b4"^15*"N (\u2030)"), colour="") + 
   scale_color_brewer(palette="Dark2", labels="") + 
@@ -143,4 +143,3 @@ with(precip_isotopes, cor(d15NNH4, Precipitation/(EndDOY-StartDOY), use = "pairw
 with(precip_isotopes, cor(d15NNO3, Precipitation/(EndDOY-StartDOY), use = "pairwise.complete.obs"))
 with(precip_isotopes, cor(d18ONO3, Precipitation/(EndDOY-StartDOY), use = "pairwise.complete.obs"))
 
-# EOF
