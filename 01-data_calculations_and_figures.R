@@ -146,7 +146,7 @@ f5cb <- ggplot(owsDIN, aes(x = year, y = NH4/NO3)) + geom_line() + geom_point() 
   scale_x_continuous(limits = c(1969, 2013)) +
   theme_bw()
 grid.arrange(f5ca, f5cb)
-f5grob <- arrangeGrob(f5ca, f5cb, nrow = 1)
+f5grob <- arrangeGrob(f5ca, f5cb, nrow = 2)
 ggsave(f5grob, filename = "DIN ratio Annual and OWS load.pdf", height = 5, width = 7, units = "in")
 
 
