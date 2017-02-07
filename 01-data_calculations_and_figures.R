@@ -23,6 +23,7 @@ library('dplyr')
 library('reshape2')
 library('ggplot2')
 library('Kendall')
+library('gridExtra')
 
 
 # 2. Load data
@@ -131,6 +132,22 @@ ggplot(owsDIN, aes(x = year, y = NH4/NO3)) + geom_line() + geom_point() +
   scale_x_continuous(limits = c(1969, 2013)) +
   theme_bw()
 ggsave(filename = "DIN ratio OWS load.pdf", height = 5, width = 7, units = "in")
+
+
+# 5c. Combined. Annual and OWS DIN ratios (NH4+/NO3-)
+f5ca <- ggplot(DIN, aes(x = year, y = NH4/NO3)) + geom_line() + geom_point() + 
+  geom_smooth(method = "lm", colour = "black") + 
+  labs(x = "Year", y = expression("Annual NH"[4]^+{}*" / NO"[3]^-{}*" load")) + 
+  scale_x_continuous(limits = c(1969, 2013)) +
+  theme_bw()
+f5cb <- ggplot(owsDIN, aes(x = year, y = NH4/NO3)) + geom_line() + geom_point() + 
+  geom_smooth(method = "lm", colour = "black") + 
+  labs(x = "Year", y = expression("OWS NH"[4]^+{}*" / NO"[3]^-{}*" load")) + 
+  scale_x_continuous(limits = c(1969, 2013)) +
+  theme_bw()
+grid.arrange(f5ca, f5cb)
+f5grob <- arrangeGrob(f5ca, f5cb, nrow = 1)
+ggsave(f5grob, filename = "DIN ratio Annual and OWS load.pdf", height = 5, width = 7, units = "in")
 
 
 # 6. Figures for 5 N species
