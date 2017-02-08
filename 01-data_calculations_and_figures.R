@@ -1,5 +1,5 @@
 ## Scripts to automate calculating annual precip chemical budgets
-# 2016-08-23
+# 2017-02-08
 # JJV
 
 
@@ -15,6 +15,7 @@
 # 7. Tables of statistics (means, trends, p-values) for mass loading
 # 8. Tables of statistics (means, trends, p-values) for concentration loading
 # 9. Figures for 5 N species concentration loading
+# 10. Basic calculations
 
 
 # 1. Load libraries
@@ -274,3 +275,41 @@ ggplot(owsallNvol.melt, aes(x = year, y = value)) + geom_line() + geom_point() +
   scale_x_continuous(limits = c(1969, 2013)) +
   theme_bw()
 ggsave(filename = "All N OWS conc.pdf", height = 8, width = 10, units = "in")
+
+
+
+# 10. Basic calculations
+
+# Average NH4 and TN concentrations during first 10 years
+as.data.frame(allNvol) %>% subset(., year <= 1979) %>% summarise(., mean(NH4), mean(TN))
+
+# Average NH4 and TN concentrations during last 10 years
+as.data.frame(allNvol) %>% subset(., year >= 2004) %>% summarise(., mean(NH4), mean(TN))
+
+# Average OWS NH4 and TN concentrations during first 10 years
+as.data.frame(owsallNvol) %>% subset(., year <= 1979) %>% summarise(., mean(NH4), mean(TN))
+
+# Average OWS NH4 and TN concentrations during last 10 years
+as.data.frame(owsallNvol) %>% subset(., year >= 2004) %>% summarise(., mean(NH4), mean(TN))
+
+# Correlation between precip amount and N deposition
+cor(allNprecip$precip, allNprecip[, 2:6])
+
+# P values from lm() between precip amount and N deposition
+summary(lm(allNprecip$NH4 ~ allNprecip$precip))$coefficients[8]
+summary(lm(allNprecip$NO3 ~ allNprecip$precip))$coefficients[8]
+summary(lm(allNprecip$TDN ~ allNprecip$precip))$coefficients[8]
+summary(lm(allNprecip$SUSPN ~ allNprecip$precip))$coefficients[8]
+summary(lm(allNprecip$TN ~ allNprecip$precip))$coefficients[8]
+
+# Average NH4:NO3 ratio during first 10 years
+as.data.frame(allN) %>% subset(., year <= 1979) %>% summarise(., mean(NH4/NO3))
+
+# Average NH4:NO3 ratio during last 10 years
+as.data.frame(allN) %>% subset(., year >= 2004) %>% summarise(., mean(NH4/NO3))
+
+# Average OWS NH4:NO3 ratio during first 10 years
+as.data.frame(owsallN) %>% subset(., year <= 1979) %>% summarise(., mean(NH4/NO3))
+
+# Average OWS NH4:NO3 ratio during last 10 years
+as.data.frame(owsallN) %>% subset(., year >= 2004) %>% summarise(., mean(NH4/NO3))
