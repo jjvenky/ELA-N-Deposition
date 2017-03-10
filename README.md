@@ -1,13 +1,7 @@
 [![DOI](https://zenodo.org/badge/69814279.svg)](https://zenodo.org/badge/latestdoi/69814279)
 
-<<<<<<< HEAD
 <script type="text/javascript" src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script><div class="altmetric-embed" data-badge-type="donut" data-altmetric-id="17167555" />
 
-<div class='altmetric-embed' data-badge-type='donut' data-doi="10.1038/nature.2012.9872"></div>
-
-
-=======
->>>>>>> parent of 34b7236... Add Altmetric badge.
 # ELA-N-Deposition
 
 Data and code to accompany the manuscript Venkiteswaran, Schiff, Paterson, Flinn, Shao, Elgood. 2017. *Increasing Nitrogen Deposition with low δ<sup>15</sup>N-NH<sub>4</sub><sup>+</sup> and δ<sup>15</sup>N-NO<sub>3</sub><sup>-</sup> Values at the Experimental Lakes Area, northwestern Ontario, Canada*. FACETS doi: 10.1139/facets-2016-0060.
